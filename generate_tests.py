@@ -18,7 +18,7 @@ def add(a, b):
 prompt = f"Generate Python unit test cases using unittest module for the following function:\n{code_snippet}"
 
 # Initialize the Gemini model
-model = genai.GenerativeModel("gemini-pro")
+model = genai.GenerativeModel("gemini-1.5-pro-latest")
 
 # Generate AI response
 response = model.generate_content(prompt)
