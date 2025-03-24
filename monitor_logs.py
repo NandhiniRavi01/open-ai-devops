@@ -16,7 +16,7 @@ with open("/var/log/jenkins/jenkins.log", "r") as log_file:
 prompt = f"Analyze the following Jenkins logs and detect anomalies:\n{logs}"
 
 # Initialize the Gemini model
-model = genai.GenerativeModel("gemini-pro")
+model = genai.GenerativeModel("gemini-1.5-pro-latest")
 
 # Get AI-generated response
 response = model.generate_content(prompt)
