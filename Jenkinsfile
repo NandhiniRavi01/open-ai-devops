@@ -8,7 +8,7 @@ pipeline {
     stages {
         
       
-
+  stage('install dependencies') {
     steps {
     sh '''
         echo "Setting up Python environment..."
@@ -20,6 +20,7 @@ pipeline {
         echo "Virtual environment setup complete."
     '''
 }
+  }
 
 
         stage('AI-Based DevOps Automation') {
