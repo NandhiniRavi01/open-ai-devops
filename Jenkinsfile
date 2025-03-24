@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-       OPENAI_API_KEY = credentials('openai-api-key') // Secure API Key
+       GEMINI_API_KEY = credentials('gemini-key') // Secure API Key
     }
 
     stages {
