@@ -1,23 +1,30 @@
-import openai  
+import google.generativeai as genai
+import os
+from dotenv import load_dotenv
 
-openai.api_key = "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"  # Replace with your OpenAI API key
+# Load environment variables from .env file
+load_dotenv()
 
+# Set up Gemini API key
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
+# Python function to generate test cases for
 code_snippet = """
 def add(a, b):
     return a + b
 """
 
-prompt = f"Generate Python test cases for the following function:\n{code_snippet}"
+# Prompt for AI
+prompt = f"Generate Python unit test cases using unittest module for the following function:\n{code_snippet}"
 
-response = openai.ChatCompletion.create(
-    model="gpt-4-turbo",
-    messages=[{"role": "user", "content": prompt}]
-)
+# Initialize the Gemini model
+model = genai.GenerativeModel("gemini-pro")
 
-test_cases = response['choices'][0]['message']['content']
+# Generate AI response
+response = model.generate_content(prompt)
 
+# Save the generated test cases
 with open("test_cases.py", "w") as file:
-    file.write(test_cases)  # Saves the AI-generated test cases
+    file.write(response.text)  # Saves the AI-generated test cases
 
 print("Test cases generated successfully!")
-
