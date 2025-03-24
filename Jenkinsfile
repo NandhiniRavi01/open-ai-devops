@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/your-repo.git' // Replace with your repo URL
+                git 'https://github.com/NandhiniRavi01/open-ai-devops.git' // Replace with your repo URL
             }
         }
 
