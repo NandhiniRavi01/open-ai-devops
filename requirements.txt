@@ -1,4 +1,6 @@
 openai==0.28.0
+python-dotenv
+
 pytest
 boto3
 tensorflow
