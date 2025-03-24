@@ -33,21 +33,7 @@ pipeline {
             }
         }
 
-        stage('Deploy Infrastructure') {
-            steps {
-                sh '''
-                echo "Activating virtual environment..."
-                . /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
-
-                echo "Initializing Terraform..."
-                terraform init
-                
-                echo "Applying AI-generated Terraform configurations..."
-                terraform apply -auto-approve
-                '''
-            }
-        }
-
+        
         stage('Monitor Logs with AI') {
             steps {
                 sh '''
