@@ -23,9 +23,13 @@ pipeline {
   }
 
 
+       stages {
         stage('AI-Based DevOps Automation') {
             steps {
                 sh '''
+                echo "Activating virtual environment..."
+                source /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
+
                 echo "Generating Terraform script using AI..."
                 python3 automate_devops.py
                 '''
@@ -35,6 +39,9 @@ pipeline {
         stage('Deploy Infrastructure') {
             steps {
                 sh '''
+                echo "Activating virtual environment..."
+                source /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
+
                 echo "Initializing Terraform..."
                 terraform init
                 
@@ -47,6 +54,9 @@ pipeline {
         stage('Monitor Logs with AI') {
             steps {
                 sh '''
+                echo "Activating virtual environment..."
+                source /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
+
                 echo "Analyzing Jenkins logs using AI..."
                 python3 monitor_logs.py
                 '''
@@ -56,6 +66,9 @@ pipeline {
         stage('Optimize Testing with AI') {
             steps {
                 sh '''
+                echo "Activating virtual environment..."
+                source /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
+
                 echo "Generating test cases using AI..."
                 python3 generate_tests.py
                 '''
@@ -65,6 +78,9 @@ pipeline {
         stage('Run AI-Generated Tests') {
             steps {
                 sh '''
+                echo "Activating virtual environment..."
+                source /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
+
                 echo "Executing AI-generated test cases..."
                 pytest test_cases.py
                 '''
