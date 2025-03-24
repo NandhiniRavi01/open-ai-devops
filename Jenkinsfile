@@ -13,7 +13,7 @@ pipeline {
                 echo "Setting up Python environment..."
                 python3 -m venv /var/lib/jenkins/workspace/open-ai-devops/venv  # Create virtual environment once
                 echo "Activating virtual environment..."
-                source /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate && \
+                . /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate && \
                 pip install --upgrade pip && \
                 pip install -r requirements.txt  # Install dependencies
                 echo "Virtual environment setup complete."
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Activating virtual environment..."
-                source /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
+                . /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
 
                 echo "Generating Terraform script using AI..."
                 python3 automate_devops.py
@@ -37,7 +37,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Activating virtual environment..."
-                source /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
+                . /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
 
                 echo "Initializing Terraform..."
                 terraform init
@@ -52,7 +52,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Activating virtual environment..."
-                source /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
+                . /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
 
                 echo "Analyzing Jenkins logs using AI..."
                 python3 monitor_logs.py
@@ -64,7 +64,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Activating virtual environment..."
-                source /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
+                . /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
 
                 echo "Generating test cases using AI..."
                 python3 generate_tests.py
@@ -76,7 +76,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Activating virtual environment..."
-                source /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
+                . /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate
 
                 echo "Executing AI-generated test cases..."
                 pytest test_cases.py
