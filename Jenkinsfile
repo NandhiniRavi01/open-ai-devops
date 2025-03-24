@@ -1,14 +1,8 @@
 pipeline {
     agent any
 
-    environment {
-       GEMINI_API_KEY = credentials('gemini-key') // Secure API Key
-    }
-
     stages {
-        
-      
-  stage('install dependencies') {
+        stage('install dependencies') {
     steps {
     sh '''
         echo "Setting up Python environment..."
@@ -21,9 +15,6 @@ pipeline {
     '''
 }
   }
-
-
-       stages {
         stage('AI-Based DevOps Automation') {
             steps {
                 sh '''
@@ -96,5 +87,4 @@ pipeline {
             echo "❌ Pipeline failed! Check logs for errors."
         }
     }
-}
 }
