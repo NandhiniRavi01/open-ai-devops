@@ -6,7 +6,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Set up Gemini API key
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+api_key = os.getenv("GEMINI_API_KEY")
+if not api_key:
+    raise ValueError("GEMINI_API_KEY not found in the environment variables.")
+
+genai.configure(api_key=api_key)
 
 # Python function to generate test cases for
 code_snippet = """
@@ -21,10 +25,11 @@ prompt = f"Generate Python unit test cases using unittest module for the followi
 model = genai.GenerativeModel("gemini-1.5-pro-latest")
 
 # Generate AI response
-response = model.generate_content(prompt)
-
-# Save the generated test cases
-with open("test_cases.py", "w") as file:
-    file.write(response.text)  # Saves the AI-generated test cases
-
-print("Test cases generated successfully!")
+try:
+    response = model.generate_content(prompt)
+    # Save the generated test cases
+    with open("test_cases.py", "w") as file:
+        file.write(response.text)  # Saves the AI-generated test cases
+    print("Test cases generated successfully!")
+except Exception as e:
+    print(f"Error generating test cases: {e}")
