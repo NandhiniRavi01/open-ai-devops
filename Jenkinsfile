@@ -9,17 +9,18 @@ pipeline {
         
       
 
-        stage('Setup Environment') {
     steps {
-        sh '''
+    sh '''
         echo "Setting up Python environment..."
         python3 -m venv venv  # Create virtual environment
-        . venv/bin/activate  # Use '.' instead of 'source' for POSIX compliance
-        pip install --upgrade pip
+        echo "Activating virtual environment..."
+        . venv/bin/activate && \
+        pip install --upgrade pip && \
         pip install -r requirements.txt  # Install dependencies
-        '''
-    }
+        echo "Virtual environment setup complete."
+    '''
 }
+
 
         stage('AI-Based DevOps Automation') {
             steps {
