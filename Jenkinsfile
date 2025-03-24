@@ -4,13 +4,13 @@ pipeline {
     environment {
        OPENAI_API_KEY = credentials('openai-api-key')
     }
+stage('Clone Repository') {
+    steps {
+        git branch: 'main', url: 'https://github.com/NandhiniRavi01/open-ai-devops.git'
+    }
+}
 
-    stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/NandhiniRavi01/open-ai-devops.git' // Replace with your repo URL
-            }
-        }
+    
 
         stage('Setup Python Environment') {
             steps {
