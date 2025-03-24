@@ -1,20 +1,26 @@
 pipeline {
     agent any
 
+    environment {
+       GEMINI_API_KEY = credentials('gemini-key') // Secure API Key
+    }
+
     stages {
-        stage('install dependencies') {
-    steps {
-    sh '''
-        echo "Setting up Python environment..."
-        python3 -m venv venv  # Create virtual environment
-        echo "Activating virtual environment..."
-        . venv/bin/activate && \
-        pip install --upgrade pip && \
-        pip install -r requirements.txt  # Install dependencies
-        echo "Virtual environment setup complete."
-    '''
-}
-  }
+
+        stage('Install Dependencies') {
+            steps {
+                sh '''
+                echo "Setting up Python environment..."
+                python3 -m venv /var/lib/jenkins/workspace/open-ai-devops/venv  # Create virtual environment once
+                echo "Activating virtual environment..."
+                source /var/lib/jenkins/workspace/open-ai-devops/venv/bin/activate && \
+                pip install --upgrade pip && \
+                pip install -r requirements.txt  # Install dependencies
+                echo "Virtual environment setup complete."
+                '''
+            }
+        }
+
         stage('AI-Based DevOps Automation') {
             steps {
                 sh '''
