@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Generating Terraform script using AI..."
-                python automate_devops.py
+                python3 automate_devops.py
                 '''
             }
         }
@@ -46,7 +46,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Analyzing Jenkins logs using AI..."
-                python monitor_logs.py
+                python3 monitor_logs.py
                 '''
             }
         }
@@ -55,7 +55,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Generating test cases using AI..."
-                python generate_tests.py
+                python3 generate_tests.py
                 '''
             }
         }
