@@ -1,8 +1,8 @@
-openai==1.3.8
-pytest==8.1.1
-boto3==1.34.82  # AWS SDK for Terraform deployment
-tensorflow==2.16.1  # If using AI model-based anomaly detection
-scikit-learn==1.4.2  # Machine learning for anomaly detection
-pandas==2.2.1  # Data processing for log monitoring
-requests==2.31.0  # API calls for AI services
+openai
+pytest
+boto3
+tensorflow
+scikit-learn
+pandas
+requests
 	
