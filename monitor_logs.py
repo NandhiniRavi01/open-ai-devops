@@ -1,18 +1,25 @@
-import openai  
+import google.generativeai as genai
+import os
+from dotenv import load_dotenv
 
-openai.api_key = "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"  # Replace with your OpenAI API key
+# Load environment variables from .env file
+load_dotenv()
+
+# Set up Gemini API key
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Read Jenkins logs
 with open("/var/log/jenkins/jenkins.log", "r") as log_file:
     logs = log_file.read()
 
+# Define prompt for AI analysis
 prompt = f"Analyze the following Jenkins logs and detect anomalies:\n{logs}"
 
-response = openai.ChatCompletion.create(
-    model="gpt-4-turbo",
-    messages=[{"role": "user", "content": prompt}]
-)
+# Initialize the Gemini model
+model = genai.GenerativeModel("gemini-pro")
+
+# Get AI-generated response
+response = model.generate_content(prompt)
 
 print("AI-based log analysis result:")
-print(response['choices'][0]['message']['content'])
-
+print(response.text)
