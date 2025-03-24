@@ -8,10 +8,19 @@ pipeline {
     stages {
         
         stage('Clone Repository') {
-            steps {
-                git branch: 'main', url: 'https://github.com/NandhiniRavi01/open-ai-devops.git'
-            }
-        }
+    steps {
+        sh '''
+        echo "Checking if Git is installed..."
+        if ! command -v git &> /dev/null
+        then
+            echo "Git not found! Installing Git..."
+            sudo apt update && sudo apt install -y git  # Use `yum` or `brew` depending on OS
+        fi
+        '''
+        git branch: 'main', url: 'https://github.com/NandhiniRavi01/open-ai-devops.git'
+    }
+}
+
 
         stage('Setup Environment') {
             steps {
