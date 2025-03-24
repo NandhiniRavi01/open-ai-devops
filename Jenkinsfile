@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        OPENAI_API_KEY = credentials('') // Store API key in Jenkins credentials
+        OPENAI_API_KEY = credentials('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') // Store API key in Jenkins credentials
     }
 
     stages {
