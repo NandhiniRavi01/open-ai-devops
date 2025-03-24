@@ -14,7 +14,7 @@ pipeline {
         if ! command -v git &> /dev/null
         then
             echo "Git not found! Installing Git..."
-            sudo apt update && sudo apt install -y git  # Use `yum` or `brew` depending on OS
+            apt update && apt install git -y
         fi
         '''
         git branch: 'main', url: 'https://github.com/NandhiniRavi01/open-ai-devops.git'
