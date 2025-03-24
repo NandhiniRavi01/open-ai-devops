@@ -1,10 +1,2 @@
-openai==0.28.0
+google-generativeai
 python-dotenv
-
-pytest
-boto3
-tensorflow
-scikit-learn
-pandas
-requests
-	
