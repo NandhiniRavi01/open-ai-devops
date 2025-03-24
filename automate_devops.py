@@ -9,7 +9,7 @@ load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Initialize the model
-model = genai.GenerativeModel("gemini-pro")
+model = genai.GenerativeModel("gemini-1.5-pro-latest")
 
 # Prompt for Terraform script generation
 prompt = "Generate a Terraform script to deploy a Jenkins server on AWS."
